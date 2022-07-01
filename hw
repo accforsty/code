@@ -1,0 +1,32 @@
+
+number = int(input("Input number: "))
+arr =['zero','one','two','three','four','five','six','seven','eight','nine']
+
+def digit_checking(number_to_word):
+    k = 0
+    array2 = ['tens','hundreds','thousands','millions']
+    lengthofwords = number_to_word.split()
+    for i in range(len(lengthofwords)):
+        if i == 1:
+            lengthofwords[:-2]+=array2[0]
+        elif i == 2:
+            lengthofwords[:-3]+=array2[1] 
+        elif i == 3:
+            lengthofwords[:-4]+=array2[2]
+        elif i == 6:
+            lengthofwords[:-6]+=array2[3]           
+    return " ".join(lengthofwords)
+       
+def number_to_word(number):
+    if number==0:
+        return " "
+    else:
+        smallans = arr[number%10]
+        ans = number_to_word(int(number/10))+smallans +" "
+    return ans
+print("Entered number was: ", number)
+print("Converted to word it is spelled like: ", end=" ")
+checkerdigit =number_to_word(number)
+print(digit_checking(checkerdigit))            
+
+
